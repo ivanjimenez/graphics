@@ -5,10 +5,15 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include "timer.h"
+#include "vector.h"
+#include "cube.h"
 
 class Window
 {
 public:
+
+    float fovFactor = 100;
+    Vector3 cameraPosition{0, 0, -5};
     bool running = false;
     int windowWidth;
     int windowHeight;
@@ -37,6 +42,10 @@ private:
 
     /* Timers */
     Timer fpsTimer, capTimer;
+
+    /* Custom objects */
+    Cube cube;
+    
 
 public:
     Window(int w, int h) : windowWidth(w), windowHeight(h){};

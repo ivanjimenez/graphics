@@ -92,6 +92,12 @@ void Window::Init()
 
 void Window::Setup()
 {
+
+    // Custom objects
+
+    cube = Cube(this, 7);
+    cube.SetRotationAmount(0.01, 0.01, 0.01);
+
     // Reservar la memoria requerida en bytes para mantener el color buffer
     colorBuffer = static_cast<uint32_t *>(malloc(sizeof(uint32_t) * windowWidth * windowHeight));
 
@@ -134,12 +140,19 @@ void Window::Update()
     avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
     // Increment the frame counter
     ++countedFrames;
+
+    // Custom objects updating
+    cube.Update();
 }
 
 void Window::Render()
 {
     // Limpiar el color buffer
     ClearColorBuffer(static_cast<uint32_t>(0xFF0000000));
+
+    // Custom objects rendering
+    cube.Render();
+    PostRender();
 }
 
 void Window::PostRender()

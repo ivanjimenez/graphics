@@ -37,3 +37,23 @@ void Vector3::RotateZ(float angle)
     x = newX;
     y = newY;
 }
+
+void Vector3::Rotate(Vector3 angles)
+{
+    if (angles.x != 0)
+        RotateX(angles.x);
+    if (angles.y != 0)
+        RotateY(angles.y);
+    if (angles.z != 0)
+        RotateZ(angles.z);
+}
+
+Vector2 Vector3::OrtographicProjection(float fovFactor)
+{
+    return Vector2{fovFactor * x, fovFactor * y};
+}
+
+Vector2 Vector3::PerspectiveProjection(float fovFactor)
+{
+    return Vector2{(fovFactor * x) / z, (fovFactor * y) / z};
+}

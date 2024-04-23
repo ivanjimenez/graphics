@@ -24,6 +24,12 @@ public:
     void RotateX(float angle);
     void RotateY(float angle);
     void RotateZ(float angle);
+    void Rotate(Vector3 angles);
+
+    Vector2 OrtographicProjection(float fovFactor);
+    Vector2 PerspectiveProjection(float fovFactor);
+
+
 };
 
 #endif
